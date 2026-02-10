@@ -1,10 +1,11 @@
 /* ============================================
-   MVD Design System — Page Management
-   Show/hide pages, transitions
+   MVD Design System v2.0 — Pages
+   Page management, transitions, responsive
    ============================================ */
 
 .main {
   min-height: 100vh;
+  background: var(--c-bg);
 }
 
 .page {
@@ -13,13 +14,13 @@
 
 .page.active {
   display: block;
-  animation: pageIn 250ms ease;
+  animation: pageIn 200ms var(--ease-out);
 }
 
 @keyframes pageIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
@@ -27,20 +28,20 @@
   }
 }
 
-/* ---- Desktop section max-widths ---- */
+/* ---- Desktop section constraints ---- */
 @media (min-width: 768px) {
   .section {
     max-width: var(--container-max);
     margin-left: auto;
     margin-right: auto;
-    padding: var(--space-10) var(--space-6);
+    padding: var(--sp-12) var(--sp-6);
   }
 
   .page-header {
     max-width: var(--container-max);
     margin-left: auto;
     margin-right: auto;
-    padding: var(--space-8) var(--space-6) var(--space-4);
+    padding: var(--sp-8) var(--sp-6) var(--sp-4);
   }
 
   .cart-list {
@@ -50,11 +51,17 @@
 
   .cart-summary {
     max-width: var(--content-max);
-    margin: var(--space-4) auto;
+    margin: var(--sp-4) auto;
   }
 
   .cta-section {
     max-width: var(--content-max);
     margin: 0 auto;
   }
+}
+
+/* ---- Selection color ---- */
+::selection {
+  background: var(--c-primary);
+  color: #fff;
 }

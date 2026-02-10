@@ -1,130 +1,204 @@
 /* ============================================
-   MVD Design System — Atelier Pro
-   Design Tokens v1.0
-   Direction B + touches premium Direction A
+   MVD Design System v2.0 — Atelier Pro
+   Design Tokens
+
+   Principles:
+   - 8px grid (Google, Apple, Stripe standard)
+   - One primary + one accent (60-30-10 rule)
+   - Layered shadows (Josh Comeau approach)
+   - Negative letter-spacing on headings
+   - Professional radius scale (6-12px, never pill on containers)
    ============================================ */
 
 :root {
-  /* ---- Colors: Atelier Pro ---- */
+  /* ================================================
+     COLORS
+     Inspired by: ManoMano (teal trust) + Le Bon Coin (orange energy)
+     Rule: 60% neutral, 30% secondary neutral, 10% primary+accent
+     ================================================ */
 
-  /* Primary — Bleu Ardoise (trust, pro, calm) */
-  --color-primary: #334155;
-  --color-primary-light: #475569;
-  --color-primary-lighter: #64748B;
-  --color-primary-dark: #1E293B;
-  --color-primary-bg: #F1F5F9;
+  /* Primary — Deep Teal (trust, professionalism — ManoMano/Vinted DNA) */
+  --c-primary-900: #134E4A;
+  --c-primary-800: #115E59;
+  --c-primary-700: #0F766E;
+  --c-primary-600: #0D9488;
+  --c-primary-500: #14B8A6;
+  --c-primary-400: #2DD4BF;
+  --c-primary: #0F766E;          /* Main — buttons, links, active states */
+  --c-primary-hover: #115E59;    /* Hover — one step darker */
+  --c-primary-bg: #F0FDFA;       /* Tinted surface — 5% opacity feel */
 
-  /* Accent — Orange Terrain (CTA, energy, Le Bon Coin DNA) */
-  --color-accent: #EA580C;
-  --color-accent-light: #FB923C;
-  --color-accent-dark: #C2410C;
-  --color-accent-bg: #FFF7ED;
+  /* Accent — Warm Orange (energy, CTA, urgency — Le Bon Coin DNA) */
+  --c-accent-700: #C2410C;
+  --c-accent-600: #EA580C;
+  --c-accent-500: #F97316;
+  --c-accent-400: #FB923C;
+  --c-accent: #EA580C;           /* Main — secondary CTA, badges, highlights */
+  --c-accent-hover: #C2410C;
+  --c-accent-bg: #FFF7ED;
 
-  /* Wine — Rose Enchères (urgency, auctions, bids) */
-  --color-wine: #BE123C;
-  --color-wine-light: #E11D48;
-  --color-wine-dark: #9F1239;
-  --color-wine-bg: #FFF1F2;
+  /* Semantic — Auction/Urgency */
+  --c-wine: #BE123C;
+  --c-wine-hover: #9F1239;
+  --c-wine-bg: #FFF1F2;
 
-  /* Success — Vert Réussite (confirmations, stock) */
-  --color-success: #059669;
-  --color-success-light: #10B981;
-  --color-success-bg: #ECFDF5;
+  /* Semantic — Feedback */
+  --c-success: #059669;
+  --c-success-bg: #ECFDF5;
+  --c-warning: #D97706;
+  --c-warning-bg: #FFFBEB;
+  --c-error: #DC2626;
+  --c-error-bg: #FEF2F2;
 
-  /* Warning */
-  --color-warning: #D97706;
-  --color-warning-bg: #FFFBEB;
+  /* Neutrals — Full gray scale (Tailwind Slate — warm undertone) */
+  --c-gray-950: #020617;
+  --c-gray-900: #0F172A;
+  --c-gray-800: #1E293B;
+  --c-gray-700: #334155;
+  --c-gray-600: #475569;
+  --c-gray-500: #64748B;
+  --c-gray-400: #94A3B8;
+  --c-gray-300: #CBD5E1;
+  --c-gray-200: #E2E8F0;
+  --c-gray-100: #F1F5F9;
+  --c-gray-50: #F8FAFC;
 
-  /* Error */
-  --color-error: #DC2626;
-  --color-error-bg: #FEF2F2;
+  /* Semantic color aliases */
+  --c-text: var(--c-gray-900);
+  --c-text-secondary: var(--c-gray-600);
+  --c-text-tertiary: var(--c-gray-400);
+  --c-border: var(--c-gray-200);
+  --c-border-subtle: rgba(0, 0, 0, 0.06);   /* Stripe-style subtle border */
+  --c-bg: #FFFFFF;
+  --c-bg-subtle: var(--c-gray-50);
+  --c-bg-muted: var(--c-gray-100);
+  --c-surface: #FFFFFF;
 
-  /* Neutrals — Warm grays */
-  --color-text: #0F172A;
-  --color-text-secondary: #475569;
-  --color-text-tertiary: #94A3B8;
-  --color-border: #E2E8F0;
-  --color-border-light: #F1F5F9;
-  --color-bg: #FFFFFF;
-  --color-bg-subtle: #F8FAFC;
-  --color-bg-muted: #F1F5F9;
+  /* ================================================
+     TYPOGRAPHY
+     Font: Inter (Vinted, Linear, proven at scale)
+     Scale: Major Third (1.25) from 16px base
+     Letter-spacing: negative on headings, zero on body, positive on caps
+     ================================================ */
 
-  /* ---- Typography ---- */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 
-  /* Premium touch: Cormorant Garamond for hero/display titles */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  /* Size scale */
+  --text-xs:   0.75rem;     /* 12px */
+  --text-sm:   0.875rem;    /* 14px */
+  --text-base: 1rem;        /* 16px */
+  --text-lg:   1.125rem;    /* 18px */
+  --text-xl:   1.25rem;     /* 20px */
+  --text-2xl:  1.5rem;      /* 24px */
+  --text-3xl:  2rem;        /* 32px */
+  --text-4xl:  2.5rem;      /* 40px */
+  --text-5xl:  3.5rem;      /* 56px — Stripe hero size */
 
-  /* Workhorse: Inter for everything else */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Line heights — tighter on large, generous on small */
+  --lh-xs:   1.33;    /* 12px → 16px */
+  --lh-sm:   1.43;    /* 14px → 20px */
+  --lh-base: 1.5;     /* 16px → 24px */
+  --lh-lg:   1.56;    /* 18px → 28px — Stripe body */
+  --lh-xl:   1.4;     /* 20px → 28px */
+  --lh-2xl:  1.33;    /* 24px → 32px */
+  --lh-3xl:  1.25;    /* 32px → 40px */
+  --lh-4xl:  1.2;     /* 40px → 48px */
+  --lh-5xl:  1.14;    /* 56px → 64px */
 
-  /* Scale (1.25 ratio — Major Third) */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
-  --text-2xl: 1.5rem;    /* 24px */
-  --text-3xl: 1.875rem;  /* 30px */
-  --text-4xl: 2.25rem;   /* 36px */
-  --text-5xl: 3rem;      /* 48px */
+  /* Letter spacing */
+  --ls-tight:  -0.02em;   /* Headings 20px+ */
+  --ls-tighter: -0.03em;  /* Display 32px+ */
+  --ls-tightest: -0.04em; /* Hero 40px+ */
+  --ls-normal: 0;          /* Body text */
+  --ls-wide:   0.02em;    /* Small text 12px */
+  --ls-wider:  0.05em;    /* ALL CAPS labels */
 
-  /* Line heights */
-  --leading-tight: 1.15;
-  --leading-snug: 1.3;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.65;
+  /* Weights — skip levels for clear hierarchy */
+  --fw-normal:   400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
 
-  /* Font weights */
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
+  /* ================================================
+     SPACING — 8px grid
+     Rule: internal padding < external margin
+     ================================================ */
 
-  /* ---- Spacing (4px base) ---- */
-  --space-1: 0.25rem;    /* 4px */
-  --space-2: 0.5rem;     /* 8px */
-  --space-3: 0.75rem;    /* 12px */
-  --space-4: 1rem;       /* 16px */
-  --space-5: 1.25rem;    /* 20px */
-  --space-6: 1.5rem;     /* 24px */
-  --space-8: 2rem;       /* 32px */
-  --space-10: 2.5rem;    /* 40px */
-  --space-12: 3rem;      /* 48px */
-  --space-16: 4rem;      /* 64px */
-  --space-20: 5rem;      /* 80px */
+  --sp-0:  0;
+  --sp-1:  0.25rem;   /* 4px  — tight inline */
+  --sp-2:  0.5rem;    /* 8px  — base unit */
+  --sp-3:  0.75rem;   /* 12px — compact padding */
+  --sp-4:  1rem;      /* 16px — standard padding */
+  --sp-5:  1.25rem;   /* 20px */
+  --sp-6:  1.5rem;    /* 24px — card padding, component gaps */
+  --sp-8:  2rem;      /* 32px — section padding */
+  --sp-10: 2.5rem;    /* 40px */
+  --sp-12: 3rem;      /* 48px — section dividers */
+  --sp-16: 4rem;      /* 64px — major section spacing */
+  --sp-20: 5rem;      /* 80px */
+  --sp-24: 6rem;      /* 96px — hero section padding */
+  --sp-32: 8rem;      /* 128px — between page sections */
 
-  /* ---- Border Radius ---- */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --radius-full: 9999px;
+  /* ================================================
+     BORDER RADIUS — professional scale
+     Never fully rounded on containers (looks toy-like)
+     ================================================ */
 
-  /* ---- Shadows ---- */
-  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --r-xs:   4px;      /* Tags, badges, small elements */
+  --r-sm:   6px;      /* Dense cards (Vinted-style), inputs */
+  --r-md:   8px;      /* Standard cards, buttons */
+  --r-lg:   12px;     /* Feature cards, modals */
+  --r-xl:   16px;     /* Hero cards */
+  --r-full: 9999px;   /* Pills, badges, avatars */
 
-  /* Colored shadows for interactive elements */
-  --shadow-primary: 0 4px 14px rgba(51, 65, 85, 0.25);
-  --shadow-accent: 0 4px 14px rgba(234, 88, 12, 0.3);
-  --shadow-wine: 0 4px 14px rgba(190, 18, 60, 0.3);
+  /* ================================================
+     SHADOWS — Layered for realism
+     Based on Josh Comeau + Tailwind + Stripe
+     Shadow color uses slate hue for warmth
+     ================================================ */
 
-  /* ---- Transitions ---- */
-  --transition-fast: 150ms ease;
-  --transition-base: 200ms ease;
-  --transition-slow: 300ms ease;
+  --shadow-color: 215 28% 17%;  /* Slate-tinted shadow base */
 
-  /* ---- Layout ---- */
+  --shadow-xs:  0 1px 2px hsl(var(--shadow-color) / 0.05);
+  --shadow-sm:  0 1px 3px hsl(var(--shadow-color) / 0.06),
+                0 1px 2px hsl(var(--shadow-color) / 0.04);
+  --shadow-md:  0 4px 6px -1px hsl(var(--shadow-color) / 0.07),
+                0 2px 4px -2px hsl(var(--shadow-color) / 0.05);
+  --shadow-lg:  0 10px 15px -3px hsl(var(--shadow-color) / 0.08),
+                0 4px 6px -4px hsl(var(--shadow-color) / 0.04);
+  --shadow-xl:  0 20px 25px -5px hsl(var(--shadow-color) / 0.1),
+                0 8px 10px -6px hsl(var(--shadow-color) / 0.05);
+
+  /* Stripe-style modal shadow */
+  --shadow-modal: 0 20px 60px rgba(50, 50, 93, 0.18);
+
+  /* Focus ring — Stripe approach */
+  --shadow-focus: 0 0 0 3px rgba(15, 118, 110, 0.3);
+
+  /* ================================================
+     TRANSITIONS — industry standard durations
+     Faster enter, slower exit
+     ================================================ */
+
+  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+
+  /* ================================================
+     LAYOUT
+     ================================================ */
+
   --container-max: 1200px;
   --content-max: 720px;
-  --header-height: 64px;
-  --bottom-nav-height: 72px;
-  --mobile-header-height: 56px;
+  --header-h: 64px;
+  --bottom-nav-h: 56px;         /* Standard touch target height */
+  --mobile-header-h: 56px;
 
-  /* ---- Z-index layers ---- */
+  /* Z-index scale */
   --z-base: 1;
   --z-dropdown: 10;
   --z-sticky: 20;
@@ -132,11 +206,4 @@
   --z-modal: 40;
   --z-toast: 50;
   --z-nav: 100;
-}
-
-/* ---- Dark mode tokens (future) ---- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Will be defined when dark mode is implemented */
-  }
 }
